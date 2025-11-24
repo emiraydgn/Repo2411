@@ -9,9 +9,22 @@ struct Planar {
 
 Planar* make(std::istream& is);
 Planar* mostLeft(Planar** pls, size_t k);
+void draw(Planar* p);
+void free_planars(Planar** pls, size_t k);
 
 int main(){
-    Planar* pts[10] = {};
+    Planar* pls[10] = {};
      size_t k = 0;
-     pts[k++] = make(std::cin);
+     
+     for (size_t i = 0; i < 10; i++){
+        try {
+        pls[k++] = make(std::cin);
+        }
+        catch (...) {
+            free_planars(pls, k);
+            return 2;
+        }
+     }
+     draw(mostLeft(pls, k));
+     free_planars(pls, k);
 }
