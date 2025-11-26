@@ -4,7 +4,7 @@
 
 struct Point : Planar {
     Point(int xx, int yy);
-
+     virtual ~Point() = default;
     int x() const override;
     int y() const override;
     int abs_sqr() const override;
